@@ -2,16 +2,10 @@ import pickle
 import funkcijos
 
 try:
-    with open("Pajamos.pickle", mode="rb") as file:
-        pajamos = pickle.load(file)
+    with open("MINIBIUDŽETAS_1.pickle", mode="rb") as file:
+        pajamos_islaidos = pickle.load(file)
 except FileNotFoundError:
-    pajamos = []
-
-try:
-    with open("Islaidos.pickle", mode="rb") as file:
-        islaidos = pickle.load(file)
-except FileNotFoundError:
-    islaidos = []
+    pajamos_islaidos = [[], []]
 
 print("Sveiki atvyke į minibiudžeto programą")
 input("Tęskite su enter ")
@@ -32,7 +26,7 @@ while True:
         pajamu_saltinis = input("Įveskite pajamų tipą (atlyginimas, stipendija ...): ")
         pajamu_suma = int(input("Įveskite pajamų sumą: "))
         pajamu_tipas = [data_pajamos, pajamu_saltinis, pajamu_suma]
-        pajamos.append(pajamu_tipas)
+        pajamos_islaidos[0].append(pajamu_tipas)
         print(f"Įvestos pajamos {pajamu_tipas}")
         input("Tęskite su enter ")
     elif pasirinkimas == "2":
@@ -40,15 +34,15 @@ while True:
         islaidu_name = input("Įveskite išlaidų pavadinimą (maistas, būstas ...): ")
         islaidu_suma = int(input("Įveskite išlaidų sumą: "))
         islaidu_tipas = [data_islaidos, islaidu_name, islaidu_suma]
-        islaidos.append(islaidu_tipas)
+        pajamos_islaidos[1].append(islaidu_tipas)
         print(f"Įvestos išlaidos {islaidu_tipas}")
         input("Tęskite su enter ")
     elif pasirinkimas == "3":
-        for elem in pajamos:
+        for elem in pajamos_islaidos[0]:
             print(f"data: {elem[0]}, pajamų tipas: {elem[1]}, {elem[2]}")
         input("Tęskite su enter ")
     elif pasirinkimas == "4":
-        for elem in islaidos:
+        for elem in pajamos_islaidos[1]:
             print(f"data: {elem[0]}, išlaidų tipas: {elem[1]}, {elem[2]}")
         input("Tęskite su enter ")
     elif pasirinkimas == "5":
@@ -59,10 +53,10 @@ while True:
                   "q - Grįžti atgal")
             Statistikos_pasirinkimas = input("> ")
             if Statistikos_pasirinkimas == "1":
-                eilutes_max = funkcijos.gauk_maximuma(pajamos)
-                eilutes_min = funkcijos.gauk_minimuma(pajamos)
-                eilutes_suma = funkcijos.gauk_bendra_suma(pajamos)
-                eilutes_avg = funkcijos.gauk_vidurki(pajamos)
+                eilutes_max = funkcijos.gauk_maximuma(pajamos_islaidos[0])
+                eilutes_min = funkcijos.gauk_minimuma(pajamos_islaidos[0])
+                eilutes_suma = funkcijos.gauk_bendra_suma(pajamos_islaidos[0])
+                eilutes_avg = funkcijos.gauk_vidurki(pajamos_islaidos[0])
                 for elem in eilutes_max:
                     print(f"Didžiausios pajamos, data: {elem[0]}. {elem[1]}: {elem[2]}")
                 for elem in eilutes_min:
@@ -71,10 +65,10 @@ while True:
                 print(f"Visų pajamų vidurkis - {eilutes_avg}")
                 input()
             elif Statistikos_pasirinkimas == "2":
-                islaidos_max = funkcijos.gauk_maximuma(islaidos)
-                islaidos_min = funkcijos.gauk_minimuma(islaidos)
-                islaidos_suma = funkcijos.gauk_bendra_suma(islaidos)
-                islaidos_avg = funkcijos.gauk_vidurki(islaidos)
+                islaidos_max = funkcijos.gauk_maximuma(pajamos_islaidos[1])
+                islaidos_min = funkcijos.gauk_minimuma(pajamos_islaidos[1])
+                islaidos_suma = funkcijos.gauk_bendra_suma(pajamos_islaidos[1])
+                islaidos_avg = funkcijos.gauk_vidurki(pajamos_islaidos[1])
                 for elem in islaidos_max:
                     print(f"Didžiausios išlaidos, data: {elem[0]}. {elem[1]}: {elem[2]}")
                 for elem in islaidos_min:
@@ -91,43 +85,43 @@ while True:
                   "q - Eiti atgal")
             Trynimo_pasirinkimas = input("> ")
             if Trynimo_pasirinkimas == "1":
-                for elem in enumerate(pajamos):
+                for elem in enumerate(pajamos_islaidos[0]):
                     print(elem)
                 indeksas = int(input("Įveskite skaičių, indeksuojantį, kurias pajamas pašalinti: "))
-                pajamos.remove(pajamos[indeksas])
-                print(pajamos)
+                pajamos_islaidos[0].remove(pajamos_islaidos[0][indeksas])
+                print(pajamos_islaidos[0])
                 input()
             elif Trynimo_pasirinkimas == "2":
-                for elem in enumerate(islaidos):
+                for elem in enumerate(pajamos_islaidos[1]):
                     print(elem)
                 indeksas = int(input("Įveskite skaičių, indeksuojantį, kurias išlaidas pašalinti: "))
-                islaidos.remove(islaidos[indeksas])
-                print(islaidos)
+                pajamos_islaidos[1].remove(pajamos_islaidos[1][indeksas])
+                print(pajamos_islaidos[1])
                 input()
             elif Trynimo_pasirinkimas == "q":
                 break
     elif pasirinkimas == "7":
-        Paieska_pasirinkimas = input("Įveskite raktažodį, ką norite surasti (pvz. stipendija, maistas ...): ")
-        for elem in pajamos:
-            if Paieska_pasirinkimas in elem:
-                print(elem[0], elem[1], elem[2])
-            else:
-                print("Raktažodis nerastas!!")
-        for elem in islaidos:
-            if Paieska_pasirinkimas in elem:
-                print(elem[0], elem[1], elem[2])
-            else:
-                print("Raktažodis nerastas!!")
-        input("Tęskite su enter ")
+        while True:
+            print("Įveskite raktažodį, ką norite surasti (pvz. stipendija, maistas ...)\n"
+                  "arba 'q' Eiti atgal")
+            Paieska_pasirinkimas = input("> ")
+            if Paieska_pasirinkimas == "q":
+                break
+            for elem in pajamos_islaidos[0]:
+                if Paieska_pasirinkimas in elem:
+                    print(elem[0], elem[1], elem[2])
+
+            for elem in pajamos_islaidos[1]:
+                if Paieska_pasirinkimas in elem:
+                    print(elem[0], elem[1], elem[2])
+
+            input("Tęskite su enter ")
     elif pasirinkimas == "q":
         print("Išėjote iš programos")
         break
-print(pajamos)
-print(islaidos)
 
-with open("Pajamos.pickle", mode="wb") as file:
+print(pajamos_islaidos)
+
+with open("MINIBIUDŽETAS_1.pickle", mode="wb") as file:
     # noinspection PyTypeChecker
-    pickle.dump(pajamos, file)
-with open("Islaidos.pickle", mode="wb") as file:
-    # noinspection PyTypeChecker
-    pickle.dump(islaidos, file)
+    pickle.dump(pajamos_islaidos, file)
