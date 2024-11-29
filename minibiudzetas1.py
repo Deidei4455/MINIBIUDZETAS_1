@@ -1,6 +1,17 @@
+import pickle
 
-pajamos =[]
-islaidos = []
+try:
+    with open("Pajamos.pickle", mode="rb") as file:
+        pajamos = pickle.load(file)
+except FileNotFoundError:
+    pajamos = []
+
+try:
+    with open("Islaidos.pickle", mode="rb") as file:
+        islaidos = pickle.load(file)
+except FileNotFoundError:
+    islaidos = []
+
 
 while True:
     print("Sveiki atvykę į minibiudžetio programą\n"
