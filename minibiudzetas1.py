@@ -22,28 +22,28 @@ while True:
           "q - Išeiti iš programos")
     pasirinkimas = input("> ")
     if pasirinkimas == "1":
-        data_pajamos = input("Įveskite pajamų datą: ")
+        pajamu_data = input("Įveskite pajamų datą: ")
         pajamu_saltinis = input("Įveskite pajamų tipą (atlyginimas, stipendija ...): ")
         pajamu_suma = int(input("Įveskite pajamų sumą: "))
-        pajamu_tipas = [data_pajamos, pajamu_saltinis, pajamu_suma]
-        pajamos_islaidos[0].append(pajamu_tipas)
-        print(f"Įvestos pajamos {pajamu_tipas}")
+        pajamos = [pajamu_data, pajamu_saltinis, pajamu_suma]
+        pajamos_islaidos[0].append(pajamos)
+        print(f"Įvestos pajamos {pajamos}")
         input("Tęskite su enter ")
     elif pasirinkimas == "2":
-        data_islaidos = input("Įveskite išlaidų datą: ")
-        islaidu_name = input("Įveskite išlaidų pavadinimą (maistas, būstas ...): ")
+        islaidu_data = input("Įveskite išlaidų datą: ")
+        islaidu_paskirtis = input("Įveskite išlaidų paskirtį (maistas, būstas ...): ")
         islaidu_suma = int(input("Įveskite išlaidų sumą: "))
-        islaidu_tipas = [data_islaidos, islaidu_name, islaidu_suma]
-        pajamos_islaidos[1].append(islaidu_tipas)
-        print(f"Įvestos išlaidos {islaidu_tipas}")
+        islaidos = [islaidu_data, islaidu_paskirtis, islaidu_suma]
+        pajamos_islaidos[1].append(islaidos)
+        print(f"Įvestos išlaidos {islaidos}")
         input("Tęskite su enter ")
     elif pasirinkimas == "3":
         for elem in pajamos_islaidos[0]:
-            print(f"data: {elem[0]}, pajamų tipas: {elem[1]}, {elem[2]}")
+            print(f"data: {elem[0]}, pajamų šaltinis: {elem[1]}, {elem[2]}")
         input("Tęskite su enter ")
     elif pasirinkimas == "4":
         for elem in pajamos_islaidos[1]:
-            print(f"data: {elem[0]}, išlaidų tipas: {elem[1]}, {elem[2]}")
+            print(f"data: {elem[0]}, išlaidų paskirtis: {elem[1]}, {elem[2]}")
         input("Tęskite su enter ")
     elif pasirinkimas == "5":
         while True:
