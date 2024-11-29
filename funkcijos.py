@@ -1,5 +1,5 @@
 # didžiausios išlaidos arba max atlyginimas
-def maximumas(listas):
+def gauk_maximuma(listas):
     """
     Funkcija priima listą ir suranda didžiausią skaičių
     tame liste, kuris yra liste,
@@ -21,7 +21,7 @@ def maximumas(listas):
 
 # listuose esamų pajamų arba išlaidų suma
 
-def sumuok(listas):
+def gauk_bendra_suma(listas):
     """
     funkcija priima listą ir gražina
     skaičių sumą.
@@ -35,7 +35,7 @@ def sumuok(listas):
 
 
 # mažiausiai uždirbantis-(ys)
-def minimumas(listas):
+def gauk_minimuma(listas):
     """
     funkcija priima listą ir grąžina
     mažiausią skaičių listo liste.
@@ -56,7 +56,7 @@ def minimumas(listas):
 # vidurkio apskaičiavimas
 
 
-def vidurkis(listas):
+def gauk_vidurki(listas):
     """
     funkcija priima sudėtinį listą ir grąžina
     to listo skaičių vidurkį kaip rezultatą.

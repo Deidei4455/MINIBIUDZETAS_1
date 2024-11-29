@@ -57,12 +57,12 @@ while True:
                   "1 - Pajamų informacija\n"
                   "2 - Išlaidų statistikos\n"
                   "q - Grįžti atgal")
-            pasirink = input("> ")
-            if pasirink == "1":
-                eilutes_max = funkcijos.maximumas(pajamos)
-                eilutes_min = funkcijos.minimumas(pajamos)
-                eilutes_suma = funkcijos.sumuok(pajamos)
-                eilutes_avg = funkcijos.vidurkis(pajamos)
+            Statistikos_pasirinkimas = input("> ")
+            if Statistikos_pasirinkimas == "1":
+                eilutes_max = funkcijos.gauk_maximuma(pajamos)
+                eilutes_min = funkcijos.gauk_minimuma(pajamos)
+                eilutes_suma = funkcijos.gauk_bendra_suma(pajamos)
+                eilutes_avg = funkcijos.gauk_vidurki(pajamos)
                 for elem in eilutes_max:
                     print(f"Didžiausios pajamos, data: {elem[0]}. {elem[1]}: {elem[2]}")
                 for elem in eilutes_min:
@@ -70,11 +70,11 @@ while True:
                 print(f"Visų pajamų suma - {eilutes_suma}")
                 print(f"Visų pajamų vidurkis - {eilutes_avg}")
                 input()
-            elif pasirink == "2":
-                islaidos_max = funkcijos.maximumas(islaidos)
-                islaidos_min = funkcijos.minimumas(islaidos)
-                islaidos_suma = funkcijos.sumuok(islaidos)
-                islaidos_avg = funkcijos.vidurkis(islaidos)
+            elif Statistikos_pasirinkimas == "2":
+                islaidos_max = funkcijos.gauk_maximuma(islaidos)
+                islaidos_min = funkcijos.gauk_minimuma(islaidos)
+                islaidos_suma = funkcijos.gauk_bendra_suma(islaidos)
+                islaidos_avg = funkcijos.gauk_vidurki(islaidos)
                 for elem in islaidos_max:
                     print(f"Didžiausios išlaidos, data: {elem[0]}. {elem[1]}: {elem[2]}")
                 for elem in islaidos_min:
@@ -82,39 +82,39 @@ while True:
                 print(f"Visų išlaidų suma - {islaidos_suma}")
                 print(f"Visų išlaidų vidurkis - {islaidos_avg}")
                 input()
-            elif pasirink == "q":
+            elif Statistikos_pasirinkimas == "q":
                 break
     elif pasirinkimas == "6":
         while True:
             print("1 - Trinti pajamų sąraše esančias pajamas\n"
                   "2 - Trinti išladių sąraše esančias išlaidas\n"
                   "q - Eiti atgal")
-            rinkis = input("> ")
-            if rinkis == "1":
+            Trynimo_pasirinkimas = input("> ")
+            if Trynimo_pasirinkimas == "1":
                 for elem in enumerate(pajamos):
                     print(elem)
                 indeksas = int(input("Įveskite skaičių, indeksuojantį, kurias pajamas pašalinti: "))
                 pajamos.remove(pajamos[indeksas])
                 print(pajamos)
                 input()
-            elif rinkis == "2":
+            elif Trynimo_pasirinkimas == "2":
                 for elem in enumerate(islaidos):
                     print(elem)
                 indeksas = int(input("Įveskite skaičių, indeksuojantį, kurias išlaidas pašalinti: "))
                 islaidos.remove(islaidos[indeksas])
                 print(islaidos)
                 input()
-            elif rinkis == "q":
+            elif Trynimo_pasirinkimas == "q":
                 break
     elif pasirinkimas == "7":
-        surasti = input("Įveskite raktažodį, ką norite surasti (pvz. stipendija, maistas ...): ")
+        Paieska_pasirinkimas = input("Įveskite raktažodį, ką norite surasti (pvz. stipendija, maistas ...): ")
         for elem in pajamos:
-            if surasti in elem:
+            if Paieska_pasirinkimas in elem:
                 print(elem[0], elem[1], elem[2])
             else:
                 print("Raktažodis nerastas!!")
         for elem in islaidos:
-            if surasti in elem:
+            if Paieska_pasirinkimas in elem:
                 print(elem[0], elem[1], elem[2])
             else:
                 print("Raktažodis nerastas!!")
