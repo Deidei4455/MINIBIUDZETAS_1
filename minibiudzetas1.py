@@ -13,7 +13,6 @@ try:
 except FileNotFoundError:
     islaidos = []
 
-
 while True:
     print("Sveiki atvykę į minibiudžetio programą\n"
           "Pagrindinis meniu\n"
@@ -22,6 +21,7 @@ while True:
           "3 - Atspausdinti pajamų eilutes\n"
           "4 - Atspausdinti išlaidų eilutes\n"
           "5 - Atspausdinti statistiką\n"
+          "6 - Ištrinti pasirinktas pajamas arba išlaidas\n"
           "q - Išeiti iš programos")
     pasirinkimas = input("> ")
     if pasirinkimas == "1":
@@ -80,6 +80,28 @@ while True:
                 print(f"Visų išlaidų vidurkis - {islaidos_avg}")
                 input()
             elif pasirink == "q":
+                break
+    elif pasirinkimas == "6":
+        while True:
+            print("1 - Trinti pajamų sąraše esančias pajamas\n"
+                  "2 - Trinti išladių sąraše esančias išlaidas\n"
+                  "q - Eiti atgal")
+            rinkis = input("> ")
+            if rinkis == "1":
+                for elem in enumerate(pajamos):
+                    print(elem)
+                indeksas = int(input("Įveskite skaičių, indeksuojantį, kurias pajamas pašalinti: "))
+                pajamos.remove(pajamos[indeksas])
+                print(pajamos)
+                input()
+            elif rinkis == "2":
+                for elem in enumerate(islaidos):
+                    print(elem)
+                indeksas = int(input("Įveskite skaičių, indeksuojantį, kurias išlaidas pašalinti: "))
+                islaidos.remove(islaidos[indeksas])
+                print(islaidos)
+                input()
+            elif rinkis == "q":
                 break
     elif pasirinkimas == "q":
         print("Išėjote iš programos")
