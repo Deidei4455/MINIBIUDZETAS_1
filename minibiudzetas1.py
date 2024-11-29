@@ -1,4 +1,5 @@
 import pickle
+import funkcijos
 
 try:
     with open("Pajamos.pickle", mode="rb") as file:
@@ -48,7 +49,38 @@ while True:
             print(f"data: {elem[0]}, išlaidų tipas: {elem[1]}, {elem[2]}")
         input("Tęskite su enter ")
     elif pasirinkimas == "5":
-        print()
+        while True:
+            print("Pasirinkite, ką norėtumėte sužinoti\n"
+                  "1 - Pajamų informacija\n"
+                  "2 - Išlaidų statistikos\n"
+                  "q - Grįžti atgal")
+            pasirink = input("> ")
+            if pasirink == "1":
+                eilutes_max = funkcijos.maximumas(pajamos)
+                eilutes_min = funkcijos.minimumas(pajamos)
+                eilutes_suma = funkcijos.sumuok(pajamos)
+                eilutes_avg = funkcijos.vidurkis(pajamos)
+                for elem in eilutes_max:
+                    print(f"Didžiausios pajamos, data: {elem[0]}. {elem[1]}: {elem[2]}")
+                for elem in eilutes_min:
+                    print(f"Mažiausios pajamos, data: {elem[0]}. {elem[1]}: {elem[2]}")
+                print(f"Visų pajamų suma - {eilutes_suma}")
+                print(f"Visų pajamų vidurkis - {eilutes_avg}")
+                input()
+            elif pasirink == "2":
+                islaidos_max = funkcijos.maximumas(islaidos)
+                islaidos_min = funkcijos.minimumas(islaidos)
+                islaidos_suma = funkcijos.sumuok(islaidos)
+                islaidos_avg = funkcijos.vidurkis(islaidos)
+                for elem in islaidos_max:
+                    print(f"Didžiausios išlaidos, data: {elem[0]}. {elem[1]}: {elem[2]}")
+                for elem in islaidos_min:
+                    print(f"Mažiausios išlaidos, data: {elem[0]}. {elem[1]}: {elem[2]}")
+                print(f"Visų išlaidų suma - {islaidos_suma}")
+                print(f"Visų išlaidų vidurkis - {islaidos_avg}")
+                input()
+            elif pasirink == "q":
+                break
     elif pasirinkimas == "q":
         print("Išėjote iš programos")
         break
