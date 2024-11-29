@@ -30,7 +30,7 @@ while True:
         pajamu_tipas = [data_pajamos, pajamu_saltinis, pajamu_suma]
         pajamos.append(pajamu_tipas)
         print(f"Įvestos pajamos {pajamu_tipas}")
-        input()
+        input("Tęskite su enter ")
     elif pasirinkimas == "2":
         data_islaidos = input("Įveskite išlaidų datą: ")
         islaidu_name = input("Įveskite išlaidų pavadinimą (maistas, būstas ...): ")
@@ -38,7 +38,15 @@ while True:
         islaidu_tipas = [data_islaidos, islaidu_name, islaidu_suma]
         islaidos.append(islaidu_tipas)
         print(f"Įvestos išlaidos {islaidu_tipas}")
-        input()
+        input("Tęskite su enter ")
+    elif pasirinkimas == "3":
+        for elem in pajamos:
+            print(f"data: {elem[0]}, pajamų tipas: {elem[1]}, {elem[2]}")
+        input("Tęskite su enter ")
+    elif pasirinkimas == "4":
+        for elem in islaidos:
+            print(f"data: {elem[0]}, išlaidų tipas: {elem[1]}, {elem[2]}")
+        input("Tęskite su enter ")
     elif pasirinkimas == "q":
         print("Išėjote iš programos")
         break
