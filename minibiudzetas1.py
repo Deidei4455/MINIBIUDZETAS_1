@@ -13,15 +13,18 @@ try:
 except FileNotFoundError:
     islaidos = []
 
+print("Sveiki atvyke į minibiudžeto programą")
+input("Tęskite su enter ")
+print("-----------------------------")
 while True:
-    print("Sveiki atvykę į minibiudžetio programą\n"
-          "Pagrindinis meniu\n"
+    print("Pagrindinis meniu\n"
           "1 - Įvesti pajamas\n"
           "2 - Įvesti išlaidas\n"
           "3 - Atspausdinti pajamų eilutes\n"
           "4 - Atspausdinti išlaidų eilutes\n"
           "5 - Atspausdinti statistiką\n"
           "6 - Ištrinti pasirinktas pajamas arba išlaidas\n"
+          "7 - Paieška, ką norėtumėte pamatyti\n"
           "q - Išeiti iš programos")
     pasirinkimas = input("> ")
     if pasirinkimas == "1":
@@ -103,6 +106,19 @@ while True:
                 input()
             elif rinkis == "q":
                 break
+    elif pasirinkimas == "7":
+        surasti = input("Įveskite raktažodį, ką norite surasti (pvz. stipendija, maistas ...): ")
+        for elem in pajamos:
+            if surasti in elem:
+                print(elem[0], elem[1], elem[2])
+            else:
+                print("Raktažodis nerastas!!")
+        for elem in islaidos:
+            if surasti in elem:
+                print(elem[0], elem[1], elem[2])
+            else:
+                print("Raktažodis nerastas!!")
+        input("Tęskite su enter ")
     elif pasirinkimas == "q":
         print("Išėjote iš programos")
         break
