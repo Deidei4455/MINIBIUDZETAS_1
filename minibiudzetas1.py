@@ -1,4 +1,5 @@
 
+pajamos =[]
 
 while True:
     print("Sveiki atvykę į minibiudžetio programą\n"
@@ -10,6 +11,14 @@ while True:
           "5 - Atspausdinti statistiką\n"
           "q - Išeiti iš programos")
     pasirinkimas = input("> ")
-    if pasirinkimas == "q":
+    if pasirinkimas == "1":
+        data_pajamos = input("Įveskite pajamų datą: ")
+        pajamu_saltinis = input("Įveskite pajamų tipą (atlyginimas, stipendija ...): ")
+        pajamu_suma = int(input("Įveskite pajamų sumą: "))
+        pajamu_tipas = [data_pajamos, pajamu_saltinis, pajamu_suma]
+        pajamos.append(pajamu_tipas)
+        print(f"Įvestos pajamos {pajamu_tipas}")
+        input()
+    elif pasirinkimas == "q":
         print("Išėjote iš programos")
         break
