@@ -44,3 +44,10 @@ while True:
         break
 print(pajamos)
 print(islaidos)
+
+with open("Pajamos.pickle", mode="wb") as file:
+    # noinspection PyTypeChecker
+    pickle.dump(pajamos, file)
+with open("Islaidos.pickle", mode="wb") as file:
+    # noinspection PyTypeChecker
+    pickle.dump(islaidos, file)
