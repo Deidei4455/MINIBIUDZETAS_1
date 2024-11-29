@@ -47,6 +47,8 @@ while True:
         for elem in islaidos:
             print(f"data: {elem[0]}, išlaidų tipas: {elem[1]}, {elem[2]}")
         input("Tęskite su enter ")
+    elif pasirinkimas == "5":
+        print()
     elif pasirinkimas == "q":
         print("Išėjote iš programos")
         break
